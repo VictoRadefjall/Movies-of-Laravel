@@ -14,7 +14,10 @@ class ActorController extends Controller
      */
     public function index()
     {
-        //
+        $actors = Actor::orderBy('name')->paginate(20);
+        return view('actor.index', [
+            'actors' => $actors
+        ]);
     }
 
     /**
@@ -57,7 +60,9 @@ class ActorController extends Controller
      */
     public function edit(Actor $actor)
     {
-        //
+        return view('actor.show', [
+            'actor' => $actor
+        ]);
     }
 
     /**

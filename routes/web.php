@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base');
 });
+Route::resource('/actors', 'ActorController');
+Route::resource('/movies', 'MovieController');

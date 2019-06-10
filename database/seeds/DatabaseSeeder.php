@@ -11,7 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Movie::class, 10)->create();
-        factory(App\Actor::class, 10)->create();
+        factory(App\Actor::class, 100)->create();
+        factory(App\Movie::class, 30)->create()->each(function($a) {
+            $slumptal = mt_rand(1, 20);
+            $a->actors()->attach(App\Actor::all()->random($slumptal));
+        });
     }
 }
